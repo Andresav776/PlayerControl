@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float forwardInput;
 
+    public Camera firstPerson;
+    public Camera thirdPerson;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +29,11 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
         //Turns the vehicle
         transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); 
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            thirdPerson.enabled = !thirdPerson.enabled;
+            firstPerson.enabled = !firstPerson.enabled;
+        }
     }
 }
